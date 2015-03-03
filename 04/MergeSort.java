@@ -61,21 +61,16 @@ public class MergeSort
 			output.add(b.remove(0));
 		    }
 	    }
-	if (a.size() == 0)
+	while(a.size() > 0)
 	    {
-		for (int i = 0; i < b.size(); i++)
-		    {
+		
+		output.add(a.remove(0));
 			
-			output.add(b.remove(b.size() - 1));
-			
-		    }
 	    }
-	if (b.size() == 0)
+	    
+	while (b.size() > 0)
 	    {
-		for (int j = 0; j < a.size(); j++)
-		    {
-			output.add(a.remove(a.size() - 1));
-		    }
+		output.add(b.remove(0));
 	    }
 	String s = new String();
 	for (int i = 0; i < output.size(); i++)
@@ -95,9 +90,9 @@ public class MergeSort
 	MergeSort ms = new MergeSort();
 	ArrayList<Integer> x = new ArrayList<Integer>();
 	String s = new String();
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	    {
-		x.add(r.nextInt(20));
+		x.add(r.nextInt(10));
 		s = s + x.get(x.size() - 1) + ", ";
 	    }
 	System.out.println(s);

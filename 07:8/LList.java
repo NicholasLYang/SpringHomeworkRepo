@@ -30,24 +30,34 @@ public class LList
     public void insert(Node n, int s)
     {
 	Node c = l;
-	while (s > 0 && c.getNext() ! = null)
-	    {
-		c = c.getNext();
-		s--;
-	    }
+	c = findNode(s);
 	n.setNext(c.getNext());
 	c.setNext(n);
     }
-    public String find(int n)
+    public Node findNode(int n)
     {
-	Node temp = l;
-	while(temp.getNext() != null && n > 0)
+	Node c = l;
+	while (n > 0 && c.getNext() != null)
 	    {
-		temp = temp.getNext();
+		c = c.getNext();
 		n--;
 	    }
-	return temp.getData();
+	return c;
     }
+    public String find(int n)
+    {
+	return findNode(n).getData();
+    }
+    public String remove(int n)
+    {
+	Node c = l;
+	c = findNode(n-1);
+	String out = findNode(n).getData();
+	c.setNext(findNode(n+1));
+	return out;
+    }
+	       
+
 
 }
 

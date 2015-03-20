@@ -2,9 +2,13 @@
     import java.io.*;
 public class LList
 {
-    private Node l = null;
+    private Node l;
     private int len = 0;
     Random r;
+    public LList()
+    {
+	l = new Node();
+    }
     public String toString()
     {
 	String s = new String();
@@ -16,14 +20,15 @@ public class LList
 	s = s + "null";
 	return s;
     }
-    public void add(Node n)
+    public void add(int n)
     {
+	Node a = new Node(n);
 	Node s = l;
 	while (s.getNext() != null)
 	    {
 		s = s.getNext();
 	    }
-	s.setNext(n);
+	s.setNext(a);
 	len++;
 	
     }
@@ -34,7 +39,7 @@ public class LList
 	n.setNext(c.getNext());
 	c.setNext(n);
     }
-    public Node findNode(int n)
+    private Node findNode(int n)
     {
 	Node c = l;
 	while (n > 0 && c.getNext() != null)
@@ -44,15 +49,15 @@ public class LList
 	    }
 	return c;
     }
-    public String find(int n)
+    public int find(int n)
     {
 	return findNode(n).getData();
     }
-    public String remove(int n)
+    public int remove(int n)
     {
 	Node c = l;
 	c = findNode(n-1);
-	String out = findNode(n).getData();
+	int out = findNode(n).getData();
 	c.setNext(findNode(n+1));
 	return out;
     }

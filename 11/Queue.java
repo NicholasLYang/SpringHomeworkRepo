@@ -32,6 +32,18 @@ public class Queue<E>
 	front = front.getNext();
 	return tmp.getData();
     }
+    public String toString()
+    {
+	String s = new String();
+	Node<E> tmp = front;
+	while (tmp != null)
+	    {
+		s = s + tmp.getData() + ", ";
+		tmp = tmp.getNext();
+	    }
+	return s;
+    }
+		    
     public boolean empty()
     {
 	return front == null;

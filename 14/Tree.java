@@ -5,15 +5,18 @@ public class Tree
 
     public void Insert(Node n)
     {
+	Node tmp = root;
 	if (root == null)
 	    {
 		root = n;
+		return;
 	    }
-	Node tmp = root;
+
 	Node back = new Node();
+	int c;
 	while (tmp != null)
 	    {
-		int c = tmp.getData().compareTo(n.getData());
+		c = tmp.getData().compareTo(n.getData());
 		if (c > 0)
 		    {
 			back = tmp;
@@ -25,7 +28,17 @@ public class Tree
 			tmp = tmp.getLeft();
 		    }
 	    }
-	
+	 c = back.getData().compareTo(n.getData());
+	 if (c > 0)
+	     {
+		 back.setRight(n);
+	     }
+	 if (c < 0)
+	     {
+		 back.setLeft(n);
+	     }
+	 
+		 
 
     }
     public Node Search(Integer i)
@@ -48,6 +61,12 @@ public class Tree
 	    }
 	return null;
     }
-	     
-    
+
+    public static void main(String[] args)
+    {
+	Tree t = new Tree();
+	Node n = new Node(10);
+	t.Insert(n);
+    }
+	    
 }
